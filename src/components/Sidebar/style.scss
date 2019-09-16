@@ -1,0 +1,38 @@
+.sidebar {
+  background-color: rgb(51, 51, 51);
+  color: $text-color;
+  max-width: $sidebar-width;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - #{$header-height} - #{$footer-height});
+
+  a {
+    text-decoration: none;
+
+    .sidebar__icon {
+      width: $sidebar-width;
+      height: $sidebar-width;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &:visited {
+        color: $text-color;
+      }
+
+      i {
+        font-size: rem(20px);
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      &:hover {
+        background-color: rgba($color: #fff, $alpha: 0.1);
+
+        i {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
