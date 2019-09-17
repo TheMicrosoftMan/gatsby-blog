@@ -1,0 +1,25 @@
+.contact-page {
+  .social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 150px;
+
+    &__item {
+      margin: 0 20px;
+      font-size: rem(50px);
+      cursor: pointer;
+      transition: transform 0.3s, font-size 0.3s, color 0.3s;
+
+      &:hover {
+        font-size: rem(70px);
+        color: #fff;
+      }
+
+      &:active {
+        transform: translateY(10px);
+      }
+    }
+  }
+}

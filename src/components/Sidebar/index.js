@@ -13,6 +13,11 @@ const Sidebar = ({ siteTitle }) => (
         <i class="mi mi-Library" />
       </span>
     </Link>
+    <Link to="/contact">
+      <span className="sidebar__icon">
+        <i class="mi mi-ContactInfo" />
+      </span>
+    </Link>
   </aside>
 )
 
