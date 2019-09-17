@@ -11,6 +11,8 @@
 @import "../components/Footer/style";
 @import "../components/PostsList/style";
 
+@import "./posts";
+
 .app {
   background-color: $base-background;
   min-height: 100vmin;

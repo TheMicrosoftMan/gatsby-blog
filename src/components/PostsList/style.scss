@@ -2,18 +2,18 @@
   display: flex;
   flex-direction: column;
   background-color: rgb(37, 37, 38);
-  height: calc(100vh - #{$header-height} - #{$footer-height});
   width: 100%;
   max-width: 250px;
+  height: $content-height;
 
   .post-link {
     cursor: pointer;
     padding-left: 4px;
-    height: 22px;
+    height: $footer-height;
     color: $text-color;
     text-decoration: none;
     font-size: rem(13px);
-    line-height: rem(22px);
+    line-height: rem($footer-height);
     display: flex;
     align-items: center;
 
@@ -33,5 +33,10 @@
       display: flex;
       align-items: center;
     }
+  }
+
+  .active {
+    background-color: red;
+    color: #fff;
   }
 }

@@ -11,11 +11,14 @@ const PostContent = ({ data }) => {
       <SEO title={post.frontmatter.title} />
       <div className="BlogPage">
         <PostsList posts={data.allMarkdownRemark.edges} />
-        <div className="post-content">
-          <h2>{post.frontmatter.title}</h2>
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
-          <h4>
-            Posted by {post.frontmatter.title} on {post.frontmatter.date}
+        <div className="post-page">
+          <h2 className="post-page__title">{post.frontmatter.title}</h2>
+          <div
+            dangerouslySetInnerHTML={{ __html: post.html }}
+            className="post-page__content"
+          />
+          <h4 className="post-page__date">
+            Posted by {post.frontmatter.author} on {post.frontmatter.date}
           </h4>
         </div>
       </div>

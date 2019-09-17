@@ -4,7 +4,6 @@
   max-width: $sidebar-width;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - #{$header-height} - #{$footer-height});
 
   a {
     text-decoration: none;

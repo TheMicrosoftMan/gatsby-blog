@@ -9,9 +9,6 @@ const BlogPage = ({ data }) => (
     <SEO title="Posts" />
     <div className="BlogPage">
       <PostsList posts={data.allMarkdownRemark.edges} />
-      <div>
-        <h1>Posts</h1>
-      </div>
     </div>
   </Layout>
 )
