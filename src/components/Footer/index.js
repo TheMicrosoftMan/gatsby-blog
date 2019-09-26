@@ -9,25 +9,25 @@ const Footer = () => (
     </span>
     <div className="social-links">
       <span className="social-links__item">
-        <i class="mi mi-facebook-f" />
+        <i className="mi mi-facebook-f" />
       </span>
       <span className="social-links__item">
-        <i class="mi mi-vk" />
+        <i className="mi mi-vk" />
       </span>
       <span className="social-links__item">
-        <i class="mi mi-twitter-square" />
+        <i className="mi mi-twitter-square" />
       </span>
       <span className="social-links__item">
-        <i class="mi mi-github" />
+        <i className="mi mi-github" />
       </span>
       <span className="social-links__item">
-        <i class="mi mi-skype" />
+        <i className="mi mi-skype" />
       </span>
       <span className="social-links__item">
-        <i class="mi mi-telegram-plane" />
+        <i className="mi mi-telegram-plane" />
       </span>
       <span className="social-links__item">
-        <i class="mi mi-Mail" />
+        <i className="mi mi-Mail" />
       </span>
     </div>
   </footer>
