@@ -12,6 +12,7 @@
 @import "../components/PostsList/style";
 @import "../components/SkillsCrircle/style";
 @import "../components/SkillsCloud/style";
+@import "../components/GitHubRepo/style";
 
 @import "./posts";
 @import "./contact";
@@ -55,5 +56,13 @@
 
   .pauseAnim {
     animation-play-state: paused;
+  }
+
+  .d-block {
+    display: block;
+  }
+
+  .d-none {
+    display: none;
   }
 }
