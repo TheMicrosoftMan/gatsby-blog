@@ -1,74 +1,34 @@
-import React, { useState } from "react"
+import React from "react"
+import SkillsCloud from "../components/SkillsCloud"
 
 import Layout from "../components/Layout/layout"
 import SEO from "../components/SEO/seo"
 
-const SkillsPage = () => {
-  const [isSpin, setSpining] = useState(true)
+const skills = [
+  { value: "React" },
+  { value: "Redux" },
+  { value: "REST API" },
+  { value: "Gatsby.js" },
+  { value: "JavaScript" },
+  { value: "Node.js" },
+  { value: "Express.js" },
+  { value: "HTML5" },
+  { value: "CSS3" },
+  { value: "SCSS" },
+  { value: "bootstrap" },
+  { value: "webpack" },
+  { value: "MongoDB" },
+  { value: "MySQL" },
+  { value: "PWA" },
+  { value: "Galp" },
+]
 
+const SkillsPage = () => {
   return (
     <Layout>
       <SEO title="Skills" />
       <div className="contact-page skills">
-        <div
-          className="orbit"
-          onMouseOver={() => setSpining(false)}
-          onMouseOut={() => setSpining(true)}
-        >
-          <div className={`orbit__planets${!isSpin ? " pauseAnim" : ""}`}>
-            <div
-              className={`orbit__planets_planet${!isSpin ? " pauseAnim" : ""}`}
-              onMouseOver={() => console.log("mi-js")}
-            >
-              <i class="mi mi-js"></i>
-            </div>
-            <div
-              className={`orbit__planets_planet${!isSpin ? " pauseAnim" : ""}`}
-              onMouseOver={() => console.log("node-js")}
-            >
-              <i class="mi mi-node-js"></i>
-            </div>
-            <div
-              className={`orbit__planets_planet${!isSpin ? " pauseAnim" : ""}`}
-              onMouseOver={() => console.log("mi-react")}
-            >
-              <i class="mi mi-react"></i>
-            </div>
-            <div
-              className={`orbit__planets_planet${!isSpin ? " pauseAnim" : ""}`}
-              onMouseOver={() => console.log("css3-alt")}
-            >
-              <i class="mi mi-css3-alt"></i>
-            </div>
-            <div
-              className={`orbit__planets_planet${!isSpin ? " pauseAnim" : ""}`}
-              onMouseOver={() => console.log("mi-html5")}
-            >
-              <i class="mi mi-html5"></i>
-            </div>
-            <div
-              className={`orbit__planets_planet${!isSpin ? " pauseAnim" : ""}`}
-              onMouseOver={() => console.log("mi-js")}
-            >
-              <i class="mi mi-js"></i>
-            </div>
-            <div
-              className={`orbit__planets_planet${!isSpin ? " pauseAnim" : ""}`}
-              onMouseOver={() => console.log("node-js")}
-            >
-              <i class="mi mi-node-js"></i>
-            </div>
-            <div
-              className={`orbit__planets_planet${!isSpin ? " pauseAnim" : ""}`}
-              onMouseOver={() => console.log("mi-react")}
-            >
-              <i class="mi mi-react"></i>
-            </div>
-            <div className={`sun${!isSpin ? " pauseAnim" : ""}`}>
-              <i class="mi mi-js"></i>
-            </div>
-          </div>
-        </div>
+        <SkillsCloud skills={skills} />
       </div>
     </Layout>
   )

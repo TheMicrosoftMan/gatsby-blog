@@ -10,6 +10,8 @@
 @import "../components/Content/style";
 @import "../components/Footer/style";
 @import "../components/PostsList/style";
+@import "../components/SkillsCrircle/style";
+@import "../components/SkillsCloud/style";
 
 @import "./posts";
 @import "./contact";
@@ -49,5 +51,9 @@
 
   .BlogPage {
     display: flex;
+  }
+
+  .pauseAnim {
+    animation-play-state: paused;
   }
 }
