@@ -29,8 +29,18 @@ const ReposPage = () => {
   return (
     <Layout>
       <SEO title="Repos" />
-      <div className="page f-column">
-        <h2>GitHub repositories</h2>
+      <div className="page">
+        {/* <h2>GitHub repositories</h2> */}
+        <div className="PostsList">
+          {githubRepos &&
+            githubRepos.map((repo, index) => {
+              return (
+                <span key={repo.id} to={repo.html_url} className="post-link">
+                  {index + 1}. {repo.name}
+                </span>
+              )
+            })}
+        </div>
         {githubRepos && githubRepos.length > 0 && (
           <div className="repos">
             {githubRepos.map((repo, index) => {

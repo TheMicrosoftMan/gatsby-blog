@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from 'gatsby'
+import { graphql } from "gatsby"
 
 import SEO from "../../components/SEO/seo"
 import Layout from "../../components/Layout/layout"
@@ -10,7 +10,7 @@ const PostContent = ({ data }) => {
   return (
     <Layout>
       <SEO title={post.frontmatter.title} />
-      <div className="BlogPage">
+      <div className="post">
         <PostsList posts={data.allMarkdownRemark.edges} />
         <div className="post-page">
           <h2 className="post-page__title">{post.frontmatter.title}</h2>
