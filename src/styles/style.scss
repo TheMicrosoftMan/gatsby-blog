@@ -13,6 +13,7 @@
 @import "../components/SkillsCrircle/style";
 @import "../components/SkillsCloud/style";
 @import "../components/GitHubRepo/style";
+@import "../components/Hello/style";
 
 @import "./posts";
 @import "./contact";
@@ -26,8 +27,18 @@
   position: relative;
   font-family: Consolas, "Courier New", monospace;
 
-  p {
-    font-size: 1rem;
+  .page {
+    h2 {
+      margin-bottom: 7px;
+    }
+  }
+
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: $content-height;
   }
 
   .posts-list {

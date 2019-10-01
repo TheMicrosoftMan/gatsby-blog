@@ -1,14 +1,15 @@
 import React from "react"
 
+import Hello from "../components/Hello"
+
 import Layout from "../components/Layout/layout"
 import SEO from "../components/SEO/seo"
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <div className="f-d-center-screen f-column">
-      <h1>Hi people</h1>
-      <p>Main page</p>
+    <div className="page main">
+      <Hello />
     </div>
   </Layout>
 )

@@ -29,7 +29,7 @@ const ReposPage = () => {
   return (
     <Layout>
       <SEO title="Repos" />
-      <div className="f-column">
+      <div className="page f-column">
         <h2>GitHub repositories</h2>
         {githubRepos && githubRepos.length > 0 && (
           <div className="repos">

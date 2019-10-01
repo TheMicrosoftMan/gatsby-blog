@@ -11,7 +11,9 @@
   max-height: $header-height;
 
   a {
+    font-size: 1.12rem;
     text-decoration: none;
+
     &:visited {
       color: rgb(204, 204, 204);
     }
