@@ -81,6 +81,136 @@
     }
   }
 
+  .github {
+    .repo_info {
+      display: flex;
+      flex-direction: column;
+      margin: 7px 0 0 7px;
+      width: 100%;
+      height: $content-height;
+      overflow-y: auto;
+
+      details {
+        margin: 5px 0;
+        summary {
+          margin: 5px 0;
+          cursor: pointer;
+
+          &:active,
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+      details[open] summary ~ * {
+        animation: sweep 0.3s;
+      }
+
+      @keyframes sweep {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      &_name {
+        font-size: 1.6rem;
+        color: $text-color;
+        margin-bottom: 10px;
+
+        &:hover {
+          color: #fff;
+        }
+      }
+
+      &_text {
+        display: flex;
+
+        &_label {
+          color: #9cdcfe;
+        }
+
+        &_value {
+          margin-left: 5px;
+          color: #b5cea8;
+        }
+      }
+
+      &_languages {
+        display: flex;
+        flex-direction: column;
+
+        &_title {
+          color: #569cd6;
+        }
+
+        &-list {
+          list-style: none;
+          padding-left: 15px;
+          margin-left: 2px;
+          box-sizing: border-box;
+          border-left: 3px solid #587c0c;
+
+          &_item {
+            &_name {
+              color: #9cdcfe;
+            }
+
+            &_size {
+              color: #b5cea8;
+              margin: 0 5px;
+            }
+
+            &_percent {
+              color: #c586c0;
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+
+      &_commits {
+        display: flex;
+        flex-direction: column;
+
+        &_title {
+          color: #569cd6;
+        }
+
+        &-list {
+          list-style: none;
+          max-height: 200px;
+          overflow-y: auto;
+          padding-left: 15px;
+          margin-left: 2px;
+          box-sizing: border-box;
+          border-left: 3px solid #587c0c;
+
+          &_item {
+            &_date {
+              color: #9cdcfe;
+            }
+
+            &_msg {
+              color: #ce9178;
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+
+      &_chart {
+        $chart-box-max-size: 600px;
+        width: 100%;
+        max-width: $chart-box-max-size;
+        position: relative;
+      }
+    }
+  }
+
   .posts-list {
     max-width: 300px;
     width: 100%;

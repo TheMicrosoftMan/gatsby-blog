@@ -8,8 +8,8 @@ const Hello = () => {
       <p>Hello,</p>
       <div className="scroller">
         <div className="inner">
-          {helloTo.map(item => {
-            return <span>{item}</span>
+          {helloTo.map((item, index) => {
+            return <span key={index}>{item}</span>
           })}
         </div>
       </div>
