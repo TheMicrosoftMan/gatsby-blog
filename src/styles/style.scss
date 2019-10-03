@@ -82,6 +82,97 @@
   }
 
   .github {
+    .user_info {
+      display: flex;
+      flex-direction: column;
+      margin: 7px 0 0 7px;
+      width: 100%;
+      height: $content-height;
+      overflow-y: auto;
+
+      .info {
+        display: flex;
+
+        span {
+          display: flex;
+
+          i {
+            margin-right: 10px;
+          }
+        }
+
+        &_avatar {
+          width: 100%;
+          max-width: 250px;
+          border-radius: 3px;
+        }
+
+        &_user {
+          display: flex;
+          flex-direction: column;
+          margin-left: 20px;
+
+          &_login {
+            font-size: 1.9rem;
+            line-height: 1.9rem;
+            margin-bottom: 5px;
+            text-decoration: none;
+            font-weight: bold;
+          }
+
+          &_name {
+            font-size: 1.6rem;
+            margin-bottom: 17px;
+            color: #ccc;
+            opacity: 0.7;
+          }
+
+          &_location {
+            align-items: center;
+            margin-bottom: 20px;
+          }
+
+          &_at {
+            line-height: 1rem;
+            margin: 3px 0;
+            color: #ccc;
+
+            &_date {
+              color: #569cd6;
+            }
+
+            &_text {
+              margin-left: 5px;
+              color: #ce9178;
+            }
+          }
+        }
+      }
+
+      .repos-block {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+
+        .repos_head {
+          display: flex;
+          align-items: center;
+          font-weight: normal;
+          margin-bottom: 5px;
+          font-size: 1.5rem;
+
+          &_repo-count {
+            font-size: 0.7rem;
+            line-height: 0.7rem;
+            margin-left: 10px;
+            border: 1px solid #d4d4d4;
+            box-sizing: border-box;
+            padding: 2px 4px;
+          }
+        }
+      }
+    }
+
     .repo_info {
       display: flex;
       flex-direction: column;
@@ -89,6 +180,37 @@
       width: 100%;
       height: $content-height;
       overflow-y: auto;
+      position: relative;
+
+      &_close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        width: 20px;
+        height: 20px;
+        color: #ccc;
+        transition-duration: 0.3s;
+        cursor: pointer;
+
+        &:hover {
+          color: #fff;
+        }
+      }
+
+      &_head {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+
+        &_avatar {
+          $avatar-size: 28px;
+          width: $avatar-size;
+          height: $avatar-size;
+          border-radius: 50%;
+          margin-right: 10px;
+          // object-fit: contain;
+        }
+      }
 
       details {
         margin: 5px 0;
@@ -118,8 +240,9 @@
 
       &_name {
         font-size: 1.6rem;
+        line-height: 1.6rem;
         color: $text-color;
-        margin-bottom: 10px;
+        text-decoration: none;
 
         &:hover {
           color: #fff;
@@ -137,6 +260,19 @@
           margin-left: 5px;
           color: #b5cea8;
         }
+
+        &_at {
+          margin: 10px 0;
+        }
+      }
+
+      &_languages-commits-chart {
+        display: flex;
+      }
+
+      &_languages-commits {
+        max-width: 50%;
+        width: 100%;
       }
 
       &_languages {
@@ -203,9 +339,11 @@
       }
 
       &_chart {
-        $chart-box-max-size: 600px;
+        display: flex;
+        align-items: center;
+        max-width: 50%;
         width: 100%;
-        max-width: $chart-box-max-size;
+        margin: 10px 0;
         position: relative;
       }
     }
