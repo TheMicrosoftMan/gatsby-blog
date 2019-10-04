@@ -4,6 +4,7 @@ import moment from "moment"
 import { Pie } from "react-chartjs-2"
 import GitHubRepo from "../components/GitHubRepo"
 import Preloader from "../components/Preloader"
+import { CSSTransition } from "react-transition-group"
 
 import Layout from "../components/Layout/layout"
 import SEO from "../components/SEO/seo"
@@ -176,253 +177,253 @@ const ReposPage = () => {
       <SEO title="Repos" />
       <div className="page github">
         <div className="PostsList">
-          {loadingState.loadingRepos && !githubRepos.length > 0 ? (
-            <Preloader />
-          ) : (
-            githubRepos.map((repo, index) => {
-              return (
-                <span
-                  key={repo.id}
-                  to={repo.html_url}
-                  className="post-link"
-                  onClick={() => getRepoInfo(repo.name)}
-                >
-                  {index + 1}. {repo.name}
-                </span>
-              )
-            })
-          )}
+          <CSSTransition
+            in={!loadingState.loadingRepos}
+            timeout={1000}
+            classNames="my-node"
+            unmountOnExit
+          >
+            <div>
+              {loadingState.loadingRepos ? (
+                <Preloader />
+              ) : (
+                githubRepos.map((repo, index) => {
+                  return (
+                    <span
+                      key={repo.id}
+                      to={repo.html_url}
+                      className="post-link"
+                      onClick={() => getRepoInfo(repo.name)}
+                    >
+                      {index + 1}. {repo.name}
+                    </span>
+                  )
+                })
+              )}
+            </div>
+          </CSSTransition>
         </div>
         {activeScreen === screens.REPO && (
-          <React.Fragment>
+          <div className="repo_info">
             {loadingState.loadingRepoInfo ? (
               <Preloader />
             ) : (
-              <div className="repo_info">
-                {activeScreen === screens.REPO &&
-                  activeRepo.hasOwnProperty("full_name") && (
-                    <React.Fragment>
-                      <div className="repo_info_head">
-                        <div
-                          className="repo_info_close"
-                          onClick={() => {
-                            setActiveScreen(screens.USER)
-                          }}
-                        >
-                          <i className="mi mi-Back"></i>
+              activeRepo.hasOwnProperty("full_name") && (
+                <React.Fragment>
+                  <div className="repo_info_head">
+                    <div
+                      className="repo_info_close"
+                      onClick={() => {
+                        setActiveScreen(screens.USER)
+                      }}
+                    >
+                      <i className="mi mi-Back"></i>
+                    </div>
+                    <img
+                      src={gitHubUserInfo.avatar_url}
+                      className="repo_info_head_avatar"
+                    />
+                    <a
+                      href={activeRepo.html_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="repo_info_name"
+                    >
+                      {activeRepo.full_name}
+                    </a>
+                  </div>
+                  <div className="repo_info_text">
+                    <p className="repo_info_text_desc">
+                      {activeRepo.description}
+                    </p>
+                  </div>
+                  <div className="repo_info_languages-commits-chart">
+                    <div className="repo_info_languages-commits">
+                      <div className="repo_info_text_at">
+                        <div className="repo_info_text">
+                          <span className="repo_info_text_label">
+                            Created at:{" "}
+                          </span>
+                          <span className="repo_info_text_value">
+                            {moment(activeRepo.created_at).format(
+                              "DD.MM.YYYY HH:mm:ss"
+                            )}
+                          </span>
                         </div>
-                        <img
-                          src={gitHubUserInfo.avatar_url}
-                          className="repo_info_head_avatar"
-                        />
-                        <a
-                          href={activeRepo.html_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="repo_info_name"
-                        >
-                          {activeRepo.full_name}
-                        </a>
-                      </div>
-                      <div className="repo_info_text">
-                        <p className="repo_info_text_desc">
-                          {activeRepo.description}
-                        </p>
-                      </div>
-                      <div className="repo_info_languages-commits-chart">
-                        <div className="repo_info_languages-commits">
-                          <div className="repo_info_text_at">
-                            <div className="repo_info_text">
-                              <span className="repo_info_text_label">
-                                Created at:{" "}
-                              </span>
-                              <span className="repo_info_text_value">
-                                {moment(activeRepo.created_at).format(
-                                  "DD.MM.YYYY HH:mm:ss"
-                                )}
-                              </span>
-                            </div>
-                            <div className="repo_info_text">
-                              <span className="repo_info_text_label">
-                                Updated at:{" "}
-                              </span>
-                              <span className="repo_info_text_value">
-                                {moment(activeRepo.updated_at).format(
-                                  "DD.MM.YYYY HH:mm:ss"
-                                )}
-                              </span>
-                            </div>
-                          </div>
-                          <div className="repo_info_languages">
-                            <details open>
-                              <summary>
-                                <span className="repo_info_languages_title">
-                                  Languages list
-                                </span>
-                              </summary>
-                              <ul className="repo_info_languages-list">
-                                {activeRepo.reposLanguages.map(
-                                  (lang, index) => {
-                                    return (
-                                      <li
-                                        key={index}
-                                        className="repo_info_languages-list_item"
-                                      >
-                                        <span className="repo_info_languages-list_item_name">
-                                          {lang.name}:
-                                        </span>
-                                        <span className="repo_info_languages-list_item_size">
-                                          {lang.bytes} bytes
-                                        </span>
-                                        -
-                                        <span className="repo_info_languages-list_item_percent">
-                                          {lang.percent}%
-                                        </span>
-                                      </li>
-                                    )
-                                  }
-                                )}
-                              </ul>
-                            </details>
-                          </div>
-                          <div className="repo_info_commits">
-                            <details open>
-                              <summary>
-                                <span className="repo_info_commits_title">
-                                  Commits list
-                                </span>
-                              </summary>
-                              <ul className="repo_info_commits-list">
-                                {activeRepo.reposCommits.map(
-                                  (commit, index) => {
-                                    return (
-                                      <li
-                                        key={index}
-                                        className="repo_info_commits-list_item"
-                                      >
-                                        <span className="repo_info_commits-list_item_date">
-                                          {moment(commit.date).format(
-                                            "DD.MM.YYYY HH:mm:ss"
-                                          )}
-                                        </span>
-                                        :
-                                        <span className="repo_info_commits-list_item_msg">
-                                          {commit.message}
-                                        </span>
-                                      </li>
-                                    )
-                                  }
-                                )}
-                              </ul>
-                            </details>
-                          </div>
+                        <div className="repo_info_text">
+                          <span className="repo_info_text_label">
+                            Updated at:{" "}
+                          </span>
+                          <span className="repo_info_text_value">
+                            {moment(activeRepo.updated_at).format(
+                              "DD.MM.YYYY HH:mm:ss"
+                            )}
+                          </span>
                         </div>
-                        <div className="repo_info_chart">
-                          <Pie
-                            data={{
-                              labels: activeRepo.reposLanguages.map(lang => {
-                                return lang.name
+                      </div>
+                      <div className="repo_info_languages">
+                        <details open>
+                          <summary>
+                            <span className="repo_info_languages_title">
+                              Languages list
+                            </span>
+                          </summary>
+                          <ul className="repo_info_languages-list">
+                            {activeRepo.reposLanguages.map((lang, index) => {
+                              return (
+                                <li
+                                  key={index}
+                                  className="repo_info_languages-list_item"
+                                >
+                                  <span className="repo_info_languages-list_item_name">
+                                    {lang.name}:
+                                  </span>
+                                  <span className="repo_info_languages-list_item_size">
+                                    {lang.bytes} bytes
+                                  </span>
+                                  -
+                                  <span className="repo_info_languages-list_item_percent">
+                                    {lang.percent}%
+                                  </span>
+                                </li>
+                              )
+                            })}
+                          </ul>
+                        </details>
+                      </div>
+                      <div className="repo_info_commits">
+                        <details open>
+                          <summary>
+                            <span className="repo_info_commits_title">
+                              Commits list
+                            </span>
+                          </summary>
+                          <ul className="repo_info_commits-list">
+                            {activeRepo.reposCommits.map((commit, index) => {
+                              return (
+                                <li
+                                  key={index}
+                                  className="repo_info_commits-list_item"
+                                >
+                                  <span className="repo_info_commits-list_item_date">
+                                    {moment(commit.date).format(
+                                      "DD.MM.YYYY HH:mm:ss"
+                                    )}
+                                  </span>
+                                  :
+                                  <span className="repo_info_commits-list_item_msg">
+                                    {commit.message}
+                                  </span>
+                                </li>
+                              )
+                            })}
+                          </ul>
+                        </details>
+                      </div>
+                    </div>
+                    <div className="repo_info_chart">
+                      <Pie
+                        data={{
+                          labels: activeRepo.reposLanguages.map(lang => {
+                            return lang.name
+                          }),
+                          datasets: [
+                            {
+                              data: activeRepo.reposLanguages.map(lang => {
+                                return lang.percent
                               }),
-                              datasets: [
-                                {
-                                  data: activeRepo.reposLanguages.map(lang => {
-                                    return lang.percent
-                                  }),
-                                  backgroundColor: activeRepo.colors,
-                                  hoverBackgroundColor: activeRepo.colors,
-                                },
-                              ],
-                            }}
-                            options={{ legend: { position: "bottom" } }}
-                          />
-                        </div>
-                      </div>
-                    </React.Fragment>
-                  )}
-              </div>
+                              backgroundColor: activeRepo.colors,
+                              hoverBackgroundColor: activeRepo.colors,
+                            },
+                          ],
+                        }}
+                        options={{ legend: { position: "bottom" } }}
+                      />
+                    </div>
+                  </div>
+                </React.Fragment>
+              )
             )}
-          </React.Fragment>
+          </div>
         )}
         {activeScreen === screens.USER && (
-          <React.Fragment>
+          <div className="user_info">
             {loadingState.loadingInfo ? (
               <Preloader />
             ) : (
-              <div className="user_info">
-                {gitHubUserInfo.hasOwnProperty("login") && (
-                  <React.Fragment>
-                    <div className="info">
-                      <img
-                        src={gitHubUserInfo.avatar_url}
-                        className="info_avatar"
-                      />
-                      <div className="info_user">
-                        <a
-                          href={gitHubUserInfo.html_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="info_user_login repo_info_name"
-                        >
-                          {gitHubUserInfo.login}
-                        </a>
-                        <span className="info_user_name">
-                          {gitHubUserInfo.name}
+              gitHubUserInfo.hasOwnProperty("login") && (
+                <React.Fragment>
+                  <div className="info">
+                    <img
+                      src={gitHubUserInfo.avatar_url}
+                      className="info_avatar"
+                    />
+                    <div className="info_user">
+                      <a
+                        href={gitHubUserInfo.html_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="info_user_login repo_info_name"
+                      >
+                        {gitHubUserInfo.login}
+                      </a>
+                      <span className="info_user_name">
+                        {gitHubUserInfo.name}
+                      </span>
+                      <span className="info_user_location">
+                        <i className="mi mi-Location"></i>
+                        {gitHubUserInfo.location}
+                      </span>
+                      <span className="info_user_at">
+                        <i className="mi mi-EmojiTabCelebrationObjects"></i>
+                        <span className="info_user_at_date">
+                          {moment(gitHubUserInfo.created_at).format(
+                            "DD.MM.YYYY HH:mm:ss"
+                          )}
                         </span>
-                        <span className="info_user_location">
-                          <i className="mi mi-Location"></i>
-                          {gitHubUserInfo.location}
+                        <span className="info_user_at_text">
+                          Joined to GitHub
                         </span>
-                        <span className="info_user_at">
-                          <i className="mi mi-EmojiTabCelebrationObjects"></i>
-                          <span className="info_user_at_date">
-                            {moment(gitHubUserInfo.created_at).format(
-                              "DD.MM.YYYY HH:mm:ss"
-                            )}
-                          </span>
-                          <span className="info_user_at_text">
-                            Joined to GitHub
-                          </span>
+                      </span>
+                      <span className="info_user_at">
+                        <i className="mi mi-DevUpdate"></i>
+                        <span className="info_user_at_date">
+                          {moment(gitHubUserInfo.updated_at).format(
+                            "DD.MM.YYYY HH:mm:ss"
+                          )}
                         </span>
-                        <span className="info_user_at">
-                          <i className="mi mi-DevUpdate"></i>
-                          <span className="info_user_at_date">
-                            {moment(gitHubUserInfo.updated_at).format(
-                              "DD.MM.YYYY HH:mm:ss"
-                            )}
-                          </span>
-                          <span className="info_user_at_text">Last update</span>
-                        </span>
-                      </div>
+                        <span className="info_user_at_text">Last update</span>
+                      </span>
                     </div>
-                    <div className="repos-block">
-                      <h3 className="repos_head">
-                        Public repositories{" "}
-                        <span className="repos_head_repo-count">
-                          {githubRepos.length || 0}
-                        </span>
-                      </h3>
-                      <div className="repos">
-                        {loadingState.loadingRepos &&
-                        !loadingState.loadingInfo ? (
-                          <Preloader />
-                        ) : (
-                          githubRepos.map((repo, index) => {
-                            return (
-                              <GitHubRepo
-                                key={index}
-                                id={index + 1}
-                                repo={repo}
-                              />
-                            )
-                          })
-                        )}
-                      </div>
+                  </div>
+                  <div className="repos-block">
+                    <h3 className="repos_head">
+                      Public repositories{" "}
+                      <span className="repos_head_repo-count">
+                        {githubRepos.length || 0}
+                      </span>
+                    </h3>
+                    <div className="repos">
+                      {loadingState.loadingRepos &&
+                      !loadingState.loadingInfo ? (
+                        <Preloader />
+                      ) : (
+                        githubRepos.map((repo, index) => {
+                          return (
+                            <GitHubRepo
+                              key={index}
+                              id={index + 1}
+                              repo={repo}
+                            />
+                          )
+                        })
+                      )}
                     </div>
-                  </React.Fragment>
-                )}
-              </div>
+                  </div>
+                </React.Fragment>
+              )
             )}
-          </React.Fragment>
+          </div>
         )}
       </div>
     </Layout>
