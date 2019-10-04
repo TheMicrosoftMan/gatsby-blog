@@ -14,6 +14,7 @@
 @import "../components/SkillsCloud/style";
 @import "../components/GitHubRepo/style";
 @import "../components/Hello/style";
+@import "../components/Preloader/style";
 
 @import "./posts";
 @import "./contact";
@@ -183,11 +184,12 @@
       position: relative;
 
       &_close {
-        position: absolute;
-        top: 10px;
-        right: 20px;
+        display: flex;
+        align-items: center;
         width: 20px;
         height: 20px;
+        font-size: 1.1rem;
+        margin-right: 15px;
         color: #ccc;
         transition-duration: 0.3s;
         cursor: pointer;
@@ -201,6 +203,7 @@
         display: flex;
         align-items: center;
         margin-bottom: 10px;
+        align-items: center;
 
         &_avatar {
           $avatar-size: 28px;
@@ -208,7 +211,6 @@
           height: $avatar-size;
           border-radius: 50%;
           margin-right: 10px;
-          // object-fit: contain;
         }
       }
 
@@ -272,7 +274,6 @@
 
       &_languages-commits {
         max-width: 50%;
-        width: 100%;
       }
 
       &_languages {
@@ -340,8 +341,7 @@
 
       &_chart {
         display: flex;
-        align-items: center;
-        max-width: 50%;
+        max-width: 30%;
         width: 100%;
         margin: 10px 0;
         position: relative;
