@@ -83,12 +83,13 @@
   }
 
   .github {
+    position: relative;
+
     .user_info {
       display: flex;
       flex-direction: column;
-      margin: 7px 0 0 7px;
-      width: 100%;
-      height: $content-height;
+      margin: 7px 0 7px 7px;
+      height: calc(#{$content-height} - 14px);
       overflow-y: auto;
 
       .info {
@@ -177,9 +178,8 @@
     .repo_info {
       display: flex;
       flex-direction: column;
-      margin: 7px 0 0 7px;
-      width: 100%;
-      height: $content-height;
+      margin: 7px 0 7px 7px;
+      height: calc(#{$content-height} - 14px);
       overflow-y: auto;
       position: relative;
 
@@ -348,17 +348,23 @@
       }
     }
 
-    .my-node-enter {
+    &-preload {
+      position: absolute;
+      right: 20px;
+      top: 0;
+    }
+
+    .opacity-animation-enter {
       opacity: 0;
     }
-    .my-node-enter-active {
+    .opacity-animation-enter-active {
       opacity: 1;
       transition: opacity 1000ms;
     }
-    .my-node-exit {
+    .opacity-animation-exit {
       opacity: 1;
     }
-    .my-node-exit-active {
+    .opacity-animation-exit-active {
       opacity: 0;
       transition: opacity 1000ms;
     }
