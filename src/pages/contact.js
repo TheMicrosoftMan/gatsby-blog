@@ -6,7 +6,7 @@ import SEO from "../components/SEO/seo"
 const ContactPage = () => (
   <Layout>
     <SEO title="Contact" />
-    <div className="f-d-center-screen f-column contact-page">
+    <div className="f-column contact-page">
       <h1>Contact</h1>
       <div className="social-links">
         <span className="social-links__item">
@@ -30,6 +30,11 @@ const ContactPage = () => (
         <span className="social-links__item">
           <i class="mi mi-Mail" />
         </span>
+      </div>
+      <div className="write-me-cont">
+        <h2>Write me</h2>
+        <textarea className="write-me-cont__area" />
+        <button className="write-me-cont__btn">Send</button>
       </div>
     </div>
   </Layout>
