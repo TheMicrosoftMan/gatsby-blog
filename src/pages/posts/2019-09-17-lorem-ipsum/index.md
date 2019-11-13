@@ -2,7 +2,7 @@
 path: "/lorem-ipsum"
 date: "2019-09-17"
 title: "Lorem ipsum"
-author: TheMicrosoftMan
+author: Me
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Gravida quis blandit turpis cursus in hac habitasse platea. Nunc sed blandit libero volutpat sed cras ornare arcu. Mi ipsum faucibus vitae aliquet nec ullamcorper sit. Non enim praesent elementum facilisis leo. Amet commodo nulla facilisi nullam vehicula. Nullam ac tortor vitae purus faucibus ornare suspendisse. Id velit ut tortor pretium viverra suspendisse potenti. Id nibh tortor id aliquet lectus proin nibh nisl. Dolor sit amet consectetur adipiscing elit pellentesque. Sed viverra ipsum nunc aliquet bibendum.
